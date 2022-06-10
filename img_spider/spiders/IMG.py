@@ -14,6 +14,7 @@ class ImgSpider(scrapy.Spider):
     # 解析网页图片的url，并写入到items
     def parse(self, response, **kwargs):
         items = ImgSpiderItem()
+        # 获取包含图片地址和标题的网页文本
         data_list = response.xpath('//*[@class="dgControl_list"]/li')
         for data in data_list:
             url_list = data.xpath('./div/div/a/@m').extract()
